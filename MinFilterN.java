@@ -5,7 +5,7 @@ public class MinFilterN<T extends Comparable<T>> extends ComparableNFilter<T> {
 	}
 
 	@Override
-	protected boolean isFilteredValue(T input, T prevFiltered) {
+	protected boolean compare(T input, T prevFiltered) {
 		return input.compareTo(prevFiltered) <= 0;
 	}
 }

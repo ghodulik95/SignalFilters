@@ -10,7 +10,7 @@ public abstract class ComparableNFilter<T extends Comparable<?>> extends NFilter
 	@Override
 	protected void processInput(T input) {
 		checkNull(input);
-		compare(input);
+		setNextValue(input);
 	}
 
 	private void checkNull(T input) {
@@ -18,13 +18,13 @@ public abstract class ComparableNFilter<T extends Comparable<?>> extends NFilter
 			throw new IllegalArgumentException("Input must not be null.");
 	}
 
-	private void compare(T input) {
+	private void setNextValue(T input) {
 		if(inputsSinceMax == N){
 			buf.push(input);
 			setOutput(getFilteredValue());
 			inputsSinceMax = 0;
 		}else{
-			if(isFilteredValue(input, getPrevOutput())){
+			if(compare(input, getPrevOutput())){
 				setOutput(input);
 				inputsSinceMax = 0;
 			}else{
@@ -33,17 +33,17 @@ public abstract class ComparableNFilter<T extends Comparable<?>> extends NFilter
 		}
 	}
 
-	protected abstract boolean isFilteredValue(T input, T prevFiltered);
+	protected abstract boolean compare(T input, T prevFiltered);
 
 	protected T getFilteredValue(){
 		Iterator<T> it = buf.iterator();
-		T max = it.next();
+		T val = it.next();
 		while(it.hasNext()){
 			T temp = it.next();
-			if(isFilteredValue(temp, max))
-				max = temp;
+			if(compare(temp, val))
+				val = temp;
 		}
-		return max;
+		return val;
 	}
 
 }
