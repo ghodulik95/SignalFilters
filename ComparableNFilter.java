@@ -35,7 +35,7 @@ public abstract class ComparableNFilter<T extends Comparable<?>> extends NFilter
 
 	protected abstract boolean compare(T input, T prevFiltered);
 
-	protected T getFilteredValue(){
+	private T getFilteredValue(){
 		Iterator<T> it = buf.iterator();
 		T val = it.next();
 		while(it.hasNext()){
