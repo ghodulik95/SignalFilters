@@ -1,13 +1,13 @@
 import java.util.Iterator;
 
 
-public class ScalarFilter extends Filter<Double> {
+public class ScalarLinearFilter extends Filter<Double> {
 	private final double[] a;
 	private final double[] b;
 	private NBuffer<Double> inputs;
 	private NBuffer<Double> outputs;
 	
-	public ScalarFilter(double[] a, double[] b){
+	public ScalarLinearFilter(double[] a, double[] b){
 		this.a = a;
 		this.b = b;
 		inputs = new NBuffer<Double>(a.length);
