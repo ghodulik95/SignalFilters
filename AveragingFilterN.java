@@ -1,5 +1,5 @@
 
-public class AveragingFilterN extends NFilter<Double>{
+public class AveragingFilterN extends FilterN<Double>{
 	private int size;
 	private double average;
 	

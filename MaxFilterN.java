@@ -1,7 +1,5 @@
-import java.util.Iterator;
 
-
-public class MaxFilterN<T extends Comparable<T>> extends ComparableNFilter<T> {
+public class MaxFilterN<T extends Comparable<T>> extends ComparableFilterN<T> {
 
 	public MaxFilterN(int n) {
 		super(n);

@@ -1,5 +1,5 @@
 
-public class MinFilterN<T extends Comparable<T>> extends ComparableNFilter<T> {
+public class MinFilterN<T extends Comparable<T>> extends ComparableFilterN<T> {
 	public MinFilterN(int n) {
 		super(n);
 	}

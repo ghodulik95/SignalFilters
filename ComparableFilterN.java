@@ -1,9 +1,9 @@
 import java.util.Iterator;
 
 
-public abstract class ComparableNFilter<T extends Comparable<?>> extends NFilter<T> {
+public abstract class ComparableFilterN<T extends Comparable<?>> extends FilterN<T> {
 
-	public ComparableNFilter(int n) {
+	public ComparableFilterN(int n) {
 		super(n);
 	}
 

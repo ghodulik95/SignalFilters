@@ -1,13 +1,11 @@
-import java.util.Iterator;
 
-
-public abstract class NFilter<T> extends Filter<T> {
+public abstract class FilterN<T> extends Filter<T> {
 
 	protected NBuffer<T> buf;
 	protected int inputsSinceMax;
 	public final int N;
 	
-	public NFilter(int n){
+	public FilterN(int n){
 		checkN(n);
 		buf = new NBuffer<T>(n);
 		inputsSinceMax = 0;
