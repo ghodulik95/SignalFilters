@@ -4,23 +4,23 @@ import java.util.Iterator;
 public class ScalarFilter extends Filter<Double> {
 	private final double[] a;
 	private final double[] b;
-	private NBuffer<Double> aBuf;
-	private NBuffer<Double> bBuf;
+	private NBuffer<Double> inputs;
+	private NBuffer<Double> outputs;
 	
 	public ScalarFilter(double[] a, double[] b){
 		this.a = a;
 		this.b = b;
-		aBuf = new NBuffer<Double>(a.length);
-		bBuf = new NBuffer<Double>(b.length);
+		inputs = new NBuffer<Double>(a.length);
+		outputs = new NBuffer<Double>(b.length);
 		setBuffers(0.0, 0.0);
 	}
 	
 	private void setBuffers(double prevInputs, double prevOutputs) {
 		for(int i = 0; i < a.length; i++){
-			aBuf.push(prevInputs);
+			inputs.push(prevInputs);
 		}
 		for(int i = 0; i < b.length; i++){
-			bBuf.push(prevOutputs);
+			outputs.push(prevOutputs);
 		}
 	}
 
@@ -40,22 +40,22 @@ public class ScalarFilter extends Filter<Double> {
 	
 	@Override
 	protected void processInput(Double input) {
-		bBuf.push(input);
-		Iterator<Double> itB = bBuf.iterator();
+		outputs.push(input);
+		Iterator<Double> itB = outputs.iterator();
 		double nextOutput = 0.0;
 		int index = 0;
 		while(itB.hasNext()){
 			nextOutput += b[index]*itB.next();
 			index++;
 		}
-		Iterator<Double> itA = aBuf.iterator();
+		Iterator<Double> itA = inputs.iterator();
 		index = 0;
 		while(itA.hasNext()){
 			nextOutput -= a[index] * itA.next();
 			index++;
 		}
 		setOutput(nextOutput);
-		aBuf.push(nextOutput);
+		inputs.push(nextOutput);
 	}
 
 }

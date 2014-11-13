@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 
 public class FIRFilter extends Filter<Double> {
 	private ScalarFilter fir;
