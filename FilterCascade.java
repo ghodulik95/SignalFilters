@@ -1,7 +1,14 @@
 import java.util.Iterator;
 import java.util.List;
 
-
+/**
+ * FilterCascade extends Filter.  It's constructor
+ * takes a list of filters, and then when processing the input
+ * it puts the input through each filter in the list.
+ * @author gmh73
+ *
+ * @param <T>
+ */
 public class FilterCascade<T> extends Filter<T>{
 	private List<Filter<T>> cascade;
 	public FilterCascade(List<Filter<T>> filters){

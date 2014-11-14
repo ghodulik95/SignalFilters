@@ -1,4 +1,12 @@
-
+/**
+ * BinomialFilter extends Filter, and expresses commonality with
+ * FIRFilter through containment.  It simply initializes a FIRFIlter
+ * with a b input of the binomial coefficients up to N.
+ * The processInput function simple sets the output to the output
+ * of calling filter on the contained FIRFilter.
+ * @author gmh73
+ *
+ */
 public class BinomialFilter extends Filter<Double>{
 	private FIRFilter bin;
 	

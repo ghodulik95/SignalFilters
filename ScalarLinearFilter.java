@@ -1,6 +1,12 @@
 import java.util.Iterator;
 
-
+/**
+ * ScalarLinearFilter extends Filter, and implements the scalar filter
+ * described in the assignment. It uses NBuffer to remember previous
+ * inputs and outputs.
+ * @author gmh73
+ *
+ */
 public class ScalarLinearFilter extends Filter<Double> {
 	private final double[] a;
 	private final double[] b;

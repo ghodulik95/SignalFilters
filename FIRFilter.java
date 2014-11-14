@@ -1,11 +1,18 @@
-
+/**
+ * FIRFilter extends Filter, and expresses commonality with
+ * ScalarLinearFilter through containment.  It simple initializes
+ * a ScalarLinearFilter with an empty a input and the processInput
+ * function simple sets the output to the output of calling filter
+ * on the contained ScalarLinearFilter.
+ * @author thomas
+ *
+ */
 public class FIRFilter extends Filter<Double> {
-	private ScalarFilter fir;
+	private ScalarLinearFilter fir;
 	
 	public FIRFilter(double[] b){
-		double[] a = new double[1];
-		a[0] = 0.0;
-		fir = new ScalarFilter(a,b);
+		double[] a = new double[0];
+		fir = new ScalarLinearFilter(a,b);
 	}
 	
 	@Override

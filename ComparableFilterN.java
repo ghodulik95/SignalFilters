@@ -1,6 +1,20 @@
 import java.util.Iterator;
 
-
+/**
+ * ComparableFilterN is an abstract class that extends FilterN.
+ * ComparableFilterN works similarly to ComparableFilter, where
+ * an abstract compare() function is made to decide if the current
+ * input should be the next input, except
+ * it must keep track of how many inputs there has been since the
+ * most recent update of the output.
+ * When deciding the next output, it must check to see
+ * if there has been N inputs since the last update of the output,
+ * and if there has, it must use the abstract compare() function
+ * to find the next output.
+ * @author gmh73
+ *
+ * @param <T>
+ */
 public abstract class ComparableFilterN<T extends Comparable<?>> extends FilterN<T> {
 
 	public ComparableFilterN(int n) {
@@ -19,16 +33,16 @@ public abstract class ComparableFilterN<T extends Comparable<?>> extends FilterN
 	}
 
 	private void setNextValue(T input) {
-		if(inputsSinceMax == N){
-			buf.push(input);
+		buf.push(input);
+		if(inputsSinceNewOutput == N ){
 			setOutput(getFilteredValue());
-			inputsSinceMax = 0;
+			inputsSinceNewOutput = 0;
 		}else{
-			if(compare(input, getPrevOutput())){
+			if(getPrevOutput() == null || compare(input, getPrevOutput())){
 				setOutput(input);
-				inputsSinceMax = 0;
+				inputsSinceNewOutput = 0;
 			}else{
-				inputsSinceMax++;
+				inputsSinceNewOutput++;
 			}
 		}
 	}
