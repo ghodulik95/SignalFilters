@@ -100,3 +100,18 @@ FIRFilter through containment.  It simply initializes a FIRFIlter
 with a b input of the binomial coefficients up to N.
 The processInput function simple sets the output to the output
 of calling filter on the contained FIRFilter.
+
+ERROR Handling:
+Some of these classes will not allow null input.  Therefore
+a null check in processInput() and factory methods will throw
+a NullPointerException.
+
+Testing:
+For each concrete class, I test filtering several inputs.
+
+Handling optional reset:
+reset() is an abstract function in Filter.  Each class may
+handle reset a little differently so it must be overwritten.
+For example, the reset for ScalarLinearFilter is very specific,
+but in AveragingFilter, it would just be resetting the calculated
+average and the size.

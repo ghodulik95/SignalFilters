@@ -24,4 +24,14 @@ public class AveragingFilter extends Filter<Double>{
 		setOutput(average);
 	}
 
+	@Override
+	public void reset(Double r) {
+		reset(r, 1);
+	}
+
+	public void reset(Double r, int i) {
+		average = r;
+		size = i;
+	}
+
 }

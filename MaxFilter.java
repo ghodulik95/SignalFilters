@@ -12,5 +12,4 @@ public class MaxFilter<T extends Comparable<T>> extends ComparableFilter<T>{
 	protected boolean compare(T input) {
 		return 0 <= input.compareTo(getPrevOutput());
 	}
-
 }

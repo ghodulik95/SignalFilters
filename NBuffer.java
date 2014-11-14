@@ -47,6 +47,16 @@ public class NBuffer<T> {
 	}
 	
 	/**
+	 * Fills the buffer with newVal
+	 * @param newVal
+	 */
+	public void reset(T newVal){
+		for(int i = 0; i < N; i++){
+			push(newVal);
+		}
+	}
+	
+	/**
 	 * Simply returns the iterator of the buffer
 	 * @return
 	 */

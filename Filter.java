@@ -23,9 +23,7 @@ public abstract class Filter<T> implements GenericFilter<T>{
 	 * Will have a different effect for different filters
 	 * @param r
 	 */
-	public void reset(T r){
-		setOutput(r);
-	}
+	public abstract void reset(T r);
 	
 	/**
 	 * Set the output to the given parameter

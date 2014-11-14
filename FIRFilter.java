@@ -25,4 +25,9 @@ public class FIRFilter extends Filter<Double> {
 		setOutput(fir.filter(input));
 	}
 
+	@Override
+	public void reset(Double r) {
+		fir.reset(r);
+	}
+
 }

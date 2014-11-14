@@ -35,4 +35,12 @@ public class FilterCascade<T> extends Filter<T>{
 		setOutput(prev);
 	}
 
+	@Override
+	public void reset(T r) {
+		Iterator<Filter<T>> it = cascade.iterator();
+		while(it.hasNext()){
+			it.next().reset(r);
+		}
+	}
+
 }

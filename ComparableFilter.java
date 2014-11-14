@@ -34,5 +34,11 @@ public abstract class ComparableFilter<T extends Comparable<?>> extends Filter<T
 		if(input == null)
 			throw new NullPointerException("Given null input.");
 	}
+	
+
+	@Override
+	public void reset(T r) {
+		setOutput(r);
+	}
 
 }

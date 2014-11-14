@@ -32,6 +32,13 @@ public abstract class FilterN<T> extends Filter<T> {
 		if(n <= 0)
 			throw new IllegalArgumentException("N must be at least 1.");
 	}
+	
+
+	@Override
+	public void reset(T r) {
+		setOutput(r);
+		inputsSinceNewOutput = 0;
+	}
 
 	
 }

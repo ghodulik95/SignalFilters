@@ -31,4 +31,12 @@ public class AveragingFilterN extends FilterN<Double>{
 		setOutput(average);
 	}
 
+	@Override
+	public void reset(Double r) {
+		super.reset(r);
+		average = r;
+		size = N;
+		buf.reset(r);
+	}
+	
 }

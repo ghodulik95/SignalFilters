@@ -58,4 +58,9 @@ public class BinomialFilter extends Filter<Double>{
 		setOutput(bin.filter(input));
 	}
 
+	@Override
+	public void reset(Double r) {
+		bin.reset(r);
+	}
+
 }

@@ -13,4 +13,9 @@ public class IdentityFilter<T> extends Filter<T>{
 		setOutput(input);
 	}
 
+	@Override
+	public void reset(T r) {
+		setOutput(r);
+	}
+
 }

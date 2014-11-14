@@ -25,4 +25,9 @@ public class GainFilter extends Filter<Double> {
 	protected void processInput(Double input) {
 		setOutput(gainFilter.filter(input));
 	}
+
+	@Override
+	public void reset(Double r) {
+		gainFilter.reset(r);
+	}
 }
