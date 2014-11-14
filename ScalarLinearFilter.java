@@ -51,14 +51,14 @@ public class ScalarLinearFilter extends Filter<Double> {
 		int index = 0;
 		//Sum all the b terms
 		while(itB.hasNext()){
-			nextOutput += b[index]*itB.next();
+			nextOutput += b[b.length - 1 - index]*itB.next();
 			index++;
 		}
 		Iterator<Double> itA = inputs.iterator();
 		index = 0;
 		//subtract all the a terms
 		while(itA.hasNext()){
-			nextOutput -= a[index] * itA.next();
+			nextOutput -= a[a.length - 1 - index] * itA.next();
 			index++;
 		}
 		//set and push the next output
