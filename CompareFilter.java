@@ -12,7 +12,6 @@ public abstract class CompareFilter<T> extends Filter<T> {
 	
 	@Override
 	public void processInput(T input) {
-		checkNull(input);
 		//If the comparison test is passed, set the output
 		if(compare(input))
 			setOutput(input);
@@ -25,15 +24,6 @@ public abstract class CompareFilter<T> extends Filter<T> {
 	 * @param input
 	 */
 	protected abstract boolean compare(T input);
-	
-	/**
-	 * Checks that an input is not null.
-	 * @param input
-	 */
-	private void checkNull(T input) {
-		if(input == null)
-			throw new NullPointerException("Given null input.");
-	}
 	
 
 	@Override
