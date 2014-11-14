@@ -6,13 +6,13 @@
  *
  * @param <T>
  */
-public class MinFilterN<T extends Comparable<T>> extends ComparableFilterN<T> {
+public class MinFilterN<T extends Comparable<T>> extends CompareFilterN<T> {
 	public MinFilterN(int n) {
 		super(n);
 	}
 
 	@Override
 	protected boolean compare(T input, T prevFiltered) {
-		return input.compareTo(prevFiltered) <= 0;
+		return input != null && input.compareTo(prevFiltered) <= 0;
 	}
 }

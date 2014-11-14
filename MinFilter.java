@@ -6,9 +6,9 @@
  *
  * @param <T>
  */
-public class MinFilter<T extends Comparable<T>> extends ComparableFilter<T> {
+public class MinFilter<T extends Comparable<T>> extends CompareFilter<T> {
 	@Override
 	protected boolean compare(T input) {
-		return input.compareTo(getPrevOutput()) <= 0;
+		return input != null && input.compareTo(getPrevOutput()) <= 0;
 	}
 }

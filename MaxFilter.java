@@ -6,10 +6,10 @@
  *
  * @param <T>
  */
-public class MaxFilter<T extends Comparable<T>> extends ComparableFilter<T>{
+public class MaxFilter<T extends Comparable<T>> extends CompareFilter<T>{
 	
 	@Override
 	protected boolean compare(T input) {
-		return 0 <= input.compareTo(getPrevOutput());
+		return input != null && 0 <= input.compareTo(getPrevOutput());
 	}
 }

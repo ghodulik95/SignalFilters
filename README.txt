@@ -33,8 +33,8 @@ the list of objects.
 FilterN is an abstract class that extends Filter.  It
 initializes an NBuffer which will store the last N inputs.
 
-ComparableFilter is an abstract class that extends Filter.
-It's generic object must extend Comparable.  ComparableFilter
+CompareFilter is an abstract class that extends Filter.
+ComparableFilter
 calls an abstract function compare() when processing the input.
 This function will decide whether the current input should become
 the output based on some condition in compare(), ie maximum or min.
@@ -47,7 +47,7 @@ MinFilter extends ComparableFilter, setting the compare function
 such that if the current input is less than the previous (via
 compareTo() function), it sets the output to the current input.
 
-ComparableFilterN is an abstract class that extends FilterN.
+CompareFilterN is an abstract class that extends FilterN.
 ComparableFilterN works similarly to ComparableFilter, where
 an abstract compare() function is made to decide if the current
 input should be the next input, except

@@ -15,15 +15,14 @@ import java.util.Iterator;
  *
  * @param <T>
  */
-public abstract class ComparableFilterN<T extends Comparable<?>> extends FilterN<T> {
+public abstract class CompareFilterN<T> extends FilterN<T> {
 	
-	public ComparableFilterN(int n) {
+	public CompareFilterN(int n) {
 		super(n);
 	}
 
 	@Override
 	protected void processInput(T input) {
-		checkNull(input);
 		//push the input into our buffer
 		buf.push(input);
 		//if its been N inputs since the last update of the output
@@ -45,15 +44,6 @@ public abstract class ComparableFilterN<T extends Comparable<?>> extends FilterN
 				inputsSinceNewOutput++;
 			}
 		}
-	}
-
-	/**
-	 * Check if an input is null
-	 * @param input
-	 */
-	private void checkNull(T input) {
-		if(input == null)
-			throw new IllegalArgumentException("Input must not be null.");
 	}
 
 	/**
