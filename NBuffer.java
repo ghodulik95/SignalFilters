@@ -13,24 +13,43 @@ import java.util.LinkedList;
  * @param <T>
  */
 public class NBuffer<T> {
+	//The object of the buffer are stored in a LinkedList
 	private LinkedList<T> buffer;
+	//The max number of items in the buffer
 	public final int N;
 	
+	/**
+	 * Set N ad contruct the buffer
+	 * @param n
+	 */
 	public NBuffer(int n){
 		N = n;
 		buffer = new LinkedList<T>();
 	}
 	
+	/**
+	 * Push an object into the buffer
+	 * This will return and remove the last item in the list
+	 * if there were N items in the buffer before calling push
+	 * @param in
+	 * @return
+	 */
 	public T push(T in){
 		T out = null;
 		buffer.add(in);
+		//If this new input makes the list too big
 		if(buffer.size() == N + 1){
+			//remove the oldest item and set it to the output
 			out = buffer.removeFirst();
 		}
 			
 		return (T)out;
 	}
 	
+	/**
+	 * Simply returns the iterator of the buffer
+	 * @return
+	 */
 	public Iterator<T> iterator(){
 		return buffer.iterator();
 	}

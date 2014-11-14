@@ -6,11 +6,17 @@
  * @param <T>
  */
 public abstract class FilterN<T> extends Filter<T> {
-
+	//The last N inputs
 	protected NBuffer<T> buf;
+	//The number of inputs since the output updated
 	protected int inputsSinceNewOutput;
+	//The number of inputs we are retaining
 	public final int N;
 	
+	/**
+	 * Sets the FilterN to size n
+	 * @param n
+	 */
 	public FilterN(int n){
 		checkN(n);
 		buf = new NBuffer<T>(n);
@@ -18,6 +24,10 @@ public abstract class FilterN<T> extends Filter<T> {
 		N = n;
 	}
 	
+	/**
+	 * Checks if n is valid, ie >= 1
+	 * @param n
+	 */
 	private void checkN(int n) {
 		if(n <= 0)
 			throw new IllegalArgumentException("N must be at least 1.");

@@ -7,20 +7,47 @@
  * @param <T>	a type of object
  */
 public abstract class Filter<T> implements GenericFilter<T>{
+	//The most recent/next output
 	private T output;
-
+	
+	/**
+	 * Returns the previous output
+	 * @return
+	 */
 	public T getPrevOutput() {
 		return output;
 	}
-
+	
+	/**
+	 * Resets the output to r
+	 * Will have a different effect for different filters
+	 * @param r
+	 */
+	public void reset(T r){
+		setOutput(r);
+	}
+	
+	/**
+	 * Set the output to the given parameter
+	 * @param prevOutput	set the output to this value
+	 */
 	protected void setOutput(T prevOutput) {
 		this.output = prevOutput;
 	}
 	
+	/**
+	 * The filter function calls the abstract function
+	 * processInput(), then returns the local output variable
+	 */
 	public T filter(T input){
 		processInput(input);
 		return output;
 	}
-
+	
+	/**
+	 * An abstract function that will alter the local output
+	 * to control the next output
+	 * @param input		the current input
+	 */
 	protected abstract void processInput(T input);
 }

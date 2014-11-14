@@ -10,6 +10,11 @@
 public class GainFilter extends Filter<Double> {
 	private FIRFilter gainFilter;
 	
+	/**
+	 * A gain filter is just a FIRFilter
+	 * with one b element
+	 * @param gain
+	 */
 	public GainFilter(double gain){
 		double[] b = new double[1];
 		b[0] = gain;

@@ -13,11 +13,23 @@ public abstract class ComparableFilter<T extends Comparable<?>> extends Filter<T
 	@Override
 	public void processInput(T input) {
 		checkNull(input);
-		compare(input);
+		//If the comparison test is passed, set the output
+		if(compare(input))
+			setOutput(input);
 	}
-
-	protected abstract void compare(T input);
-
+	
+	/**
+	 * An abstract compare function that will determine
+	 * if the input passes a comparison test over
+	 * the previous output.
+	 * @param input
+	 */
+	protected abstract boolean compare(T input);
+	
+	/**
+	 * Checks that an input is not null.
+	 * @param input
+	 */
 	private void checkNull(T input) {
 		if(input == null)
 			throw new NullPointerException("Given null input.");

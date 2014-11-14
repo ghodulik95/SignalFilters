@@ -10,7 +10,13 @@ import java.util.List;
  * @param <T>
  */
 public class FilterCascade<T> extends Filter<T>{
+	//The list of filters
 	private List<Filter<T>> cascade;
+	
+	/**
+	 * A constructor that takes a list of filters for cascading
+	 * @param filters	a list of filters
+	 */
 	public FilterCascade(List<Filter<T>> filters){
 		if(filters.size() <= 0)
 			throw new IllegalArgumentException("There must be at least one filter in the cascade.");
@@ -19,6 +25,8 @@ public class FilterCascade<T> extends Filter<T>{
 	
 	@Override
 	protected void processInput(T input) {
+		//Go through each filter then set the output to
+		//the final result
 		Iterator<Filter<T>> it = cascade.iterator();
 		T prev = input;
 		while(it.hasNext()){

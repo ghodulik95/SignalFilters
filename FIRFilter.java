@@ -10,6 +10,11 @@
 public class FIRFilter extends Filter<Double> {
 	private ScalarLinearFilter fir;
 	
+	/**
+	 * A FIRFilter is just a ScalarLinearFilter with
+	 * an empty a
+	 * @param b
+	 */
 	public FIRFilter(double[] b){
 		double[] a = new double[0];
 		fir = new ScalarLinearFilter(a,b);
