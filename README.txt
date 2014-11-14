@@ -1,3 +1,12 @@
+Please note that I misunderstood the assignment and began
+coding.  If my design is confusing, please feel free to look at
+the code, but note that it is not 100% complete. 
+
+This file contains descriptions of each interface, abstract class,
+and class in my design.  I have also included a PNG image of
+this heirarchy.  Please use the image, this text file, and
+the included code to get an understanding of my design.
+
 GenericFilter is an interface with Generic T that specifies
 the public functions of a filter, which is just the one function
 filter(T input) which outputs a T.
@@ -91,12 +100,3 @@ FIRFilter through containment.  It simply initializes a FIRFIlter
 with a b input of the binomial coefficients up to N.
 The processInput function simple sets the output to the output
 of calling filter on the contained FIRFilter.
-
-
-
-
-
-
-
-
-
