@@ -104,7 +104,9 @@ of calling filter on the contained FIRFilter.
 ERROR Handling:
 Some of these classes will not allow null input.  Therefore
 a null check in processInput() and factory methods will throw
-a NullPointerException.
+a NullPointerException.  For any FilterN class, N must be >= 1,
+and errors will be handled by throwing an exception in factory
+methods.
 
 Testing:
 For each concrete class, I test filtering several inputs.
