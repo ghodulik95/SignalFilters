@@ -8,12 +8,12 @@
  *
  * @param <T>
  */
-public abstract class CompareFilter<T> extends Filter<T> {
+public abstract class CompareFilter<T> extends Filter<T> implements Comparing<T>{
 	
 	@Override
 	public void processInput(T input) {
 		//If the comparison test is passed, set the output
-		if(compare(input))
+		if(compare(input, getPrevOutput()))
 			setOutput(input);
 	}
 	
@@ -23,7 +23,7 @@ public abstract class CompareFilter<T> extends Filter<T> {
 	 * the previous output.
 	 * @param input
 	 */
-	protected abstract boolean compare(T input);
+	public abstract boolean compare(T left, T right);
 	
 
 	@Override

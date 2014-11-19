@@ -9,7 +9,7 @@
 public class MaxFilter<T extends Comparable<T>> extends CompareFilter<T>{
 	
 	@Override
-	protected boolean compare(T input) {
-		return input != null && 0 <= input.compareTo(getPrevOutput());
+	public boolean compare(T left, T right) {
+		return left != null && 0 <= left.compareTo(right);
 	}
 }

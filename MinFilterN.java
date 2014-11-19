@@ -12,7 +12,7 @@ public class MinFilterN<T extends Comparable<T>> extends CompareFilterN<T> {
 	}
 
 	@Override
-	protected boolean compare(T input, T prevFiltered) {
-		return input != null && input.compareTo(prevFiltered) <= 0;
+	public boolean compare(T left, T right) {
+		return left != null && left.compareTo(right) <= 0;
 	}
 }

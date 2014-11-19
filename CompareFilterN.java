@@ -15,7 +15,7 @@ import java.util.Iterator;
  *
  * @param <T>
  */
-public abstract class CompareFilterN<T> extends FilterN<T> {
+public abstract class CompareFilterN<T> extends FilterN<T> implements Comparing<T>{
 	
 	public CompareFilterN(int n) {
 		super(n);
@@ -53,7 +53,7 @@ public abstract class CompareFilterN<T> extends FilterN<T> {
 	 * @param prevFiltered
 	 * @return
 	 */
-	protected abstract boolean compare(T input, T prevFiltered);
+	public abstract boolean compare(T left, T right);
 	
 	/**
 	 * Iterates through the buffer of previous inputs
