@@ -28,7 +28,7 @@ public abstract class FilterN<T> extends Filter<T> {
 	 * Checks if n is valid, ie >= 1
 	 * @param n
 	 */
-	private void checkN(int n) {
+	protected final void checkN(int n) {
 		if(n <= 0)
 			throw new IllegalArgumentException("N must be at least 1.");
 	}
