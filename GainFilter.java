@@ -7,7 +7,7 @@
  * @author gmh73
  *
  */
-public class GainFilter extends Filter<Double> {
+public class GainFilter extends ScalarFilter {
 	private FIRFilter gainFilter;
 	
 	/**

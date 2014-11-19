@@ -7,7 +7,7 @@ import java.util.Iterator;
  * @author gmh73
  *
  */
-public class ScalarLinearFilter extends Filter<Double> {
+public class ScalarLinearFilter extends ScalarFilter {
 	//The a values
 	private final double[] a;
 	//The b values

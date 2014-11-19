@@ -7,7 +7,7 @@
  * @author thomas
  *
  */
-public class FIRFilter extends Filter<Double> {
+public class FIRFilter extends ScalarFilter {
 	private ScalarLinearFilter fir;
 	
 	/**

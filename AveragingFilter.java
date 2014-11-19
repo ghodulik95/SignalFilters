@@ -8,7 +8,7 @@
  * @author gmh73
  *
  */
-public class AveragingFilter extends Filter<Double>{
+public class AveragingFilter extends ScalarFilter{
 	private int size;
 	private double average;
 	

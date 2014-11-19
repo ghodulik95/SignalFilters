@@ -7,7 +7,7 @@
  * @author gmh73
  *
  */
-public class BinomialFilter extends Filter<Double>{
+public class BinomialFilter extends ScalarFilter {
 	private FIRFilter bin;
 	
 	/**
@@ -15,7 +15,7 @@ public class BinomialFilter extends Filter<Double>{
 	 * with a b that is binomial coefficients
 	 * @param n
 	 */
-	public BinomialFilter(int n){
+	private BinomialFilter(int n){
 		double[] b = new double[n+1];
 		setBinomial(b);
 		bin = new FIRFilter(b);
@@ -61,6 +61,12 @@ public class BinomialFilter extends Filter<Double>{
 	@Override
 	public void reset(Double r) {
 		bin.reset(r);
+	}
+	
+	public static BinomialFilter getInstance(int n){
+		if(n < 0)
+			throw new IllegalArgumentException("N cannot be negative");
+		return new BinomialFilter(n);
 	}
 
 }
