@@ -15,8 +15,8 @@ public class GainFilter extends ScalarFilter {
 	 * with one b element
 	 * @param gain
 	 */
-	public GainFilter(double gain){
-		double[] b = new double[1];
+	public GainFilter(Double gain){
+		Double[] b = new Double[1];
 		b[0] = gain;
 		gainFilter = new FIRFilter(b);
 	}

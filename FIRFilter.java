@@ -15,8 +15,8 @@ public class FIRFilter extends ScalarFilter {
 	 * an empty a
 	 * @param b
 	 */
-	public FIRFilter(double[] b){
-		double[] a = new double[0];
+	public FIRFilter(Double[] b){
+		Double[] a = new Double[0];
 		fir = new ScalarLinearFilter(a,b);
 	}
 	

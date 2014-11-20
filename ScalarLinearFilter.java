@@ -9,9 +9,9 @@ import java.util.Iterator;
  */
 public class ScalarLinearFilter extends ScalarFilter {
 	//The a values
-	private final double[] a;
+	private final Double[] a;
 	//The b values
-	private final double[] b;
+	private final Double[] b;
 	//The recorded inputs
 	private NBuffer<Double> inputs;
 	//The recorded outputs
@@ -22,7 +22,7 @@ public class ScalarLinearFilter extends ScalarFilter {
 	 * @param a
 	 * @param b
 	 */
-	public ScalarLinearFilter(double[] a, double[] b){
+	public ScalarLinearFilter(Double[] a, Double[] b){
 		this.a = a;
 		this.b = b;
 		inputs = new NBuffer<Double>(a.length);
@@ -35,7 +35,7 @@ public class ScalarLinearFilter extends ScalarFilter {
 	 * @param prevInputs	all the previous inputs
 	 * @param prevOutputs	all the previous outputs
 	 */
-	private void resetBuffers(double prevInputs, double prevOutputs) {
+	private void resetBuffers(Double prevInputs, Double prevOutputs) {
 		inputs.reset(prevInputs);
 		outputs.reset(prevOutputs);
 	}
@@ -47,7 +47,7 @@ public class ScalarLinearFilter extends ScalarFilter {
 		//all the b_i*x_i terms then subtracting the 
 		//a_i*y_i terms
 		Iterator<Double> itB = outputs.iterator();
-		double nextOutput = 0.0;
+		Double nextOutput = 0.0;
 		int index = 0;
 		//Sum all the b terms
 		while(itB.hasNext()){
@@ -69,10 +69,10 @@ public class ScalarLinearFilter extends ScalarFilter {
 	@Override
 	public void reset(Double r) {
 		//The previous inputs are set to r
-		double prevInputs = r;
+		Double prevInputs = r;
 		//We must calculate the previous outputs
-		double prevOutputsNumerator = 0.0;
-		double prevOutputsDenominator = 1;
+		Double prevOutputsNumerator = 0.0;
+		Double prevOutputsDenominator = 1.0;
 		//The numerator is a summation of b
 		for(int i = 0; i < b.length; i++){
 			prevOutputsNumerator += b[i];
@@ -82,7 +82,7 @@ public class ScalarLinearFilter extends ScalarFilter {
 			prevOutputsDenominator += a[i];
 		}
 		//The output is also multiplied by r
-		double prevOutputs = (r * prevOutputsNumerator) / prevOutputsDenominator;
+		Double prevOutputs = (r * prevOutputsNumerator) / prevOutputsDenominator;
 		//set the previous values
 		resetBuffers(prevInputs, prevOutputs);
 	}

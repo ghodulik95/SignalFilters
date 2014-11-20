@@ -16,7 +16,7 @@ public class BinomialFilter extends ScalarFilter {
 	 * @param n
 	 */
 	private BinomialFilter(int n){
-		double[] b = new double[n+1];
+		Double[] b = new Double[n+1];
 		setBinomial(b);
 		bin = new FIRFilter(b);
 	}
@@ -26,13 +26,13 @@ public class BinomialFilter extends ScalarFilter {
 	 * binomial coefficient
 	 * @param b
 	 */
-	private void setBinomial(double[] b) {
+	private void setBinomial(Double[] b) {
 		int n = b.length - 1;
 		//Get all the factorials from 0 to n
 		int[] factorial = factorial(n);
 		//Set the binomial coefficients
 		for(int i = 0; i <= n; i++){
-			b[i] = factorial[n] / (factorial[i] * factorial[ n - i]);
+			b[i] = 1.0*factorial[n] / (factorial[i] * factorial[ n - i]);
 		}
 	}
 	
