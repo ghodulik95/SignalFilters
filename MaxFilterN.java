@@ -14,6 +14,6 @@ public class MaxFilterN<T extends Comparable<T>> extends CompareFilterN<T> {
 
 	@Override
 	public boolean compare(T left, T right) {
-		return left != null && 0 <= left.compareTo(right);
+		return right == null || (left != null && 0 <= left.compareTo(right));
 	}
 }

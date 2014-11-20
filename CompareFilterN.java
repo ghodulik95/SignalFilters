@@ -26,11 +26,11 @@ public abstract class CompareFilterN<T> extends FilterN<T> implements Comparing<
 		//push the input into our buffer
 		buf.push(input);
 		//if its been N inputs since the last update of the output
-		if(inputsSinceNewOutput == N ){
+		if(inputsSinceNewOutput == N - 1){
 			//set the output based on our remembered N inputs
 			setOutput(getFilteredValue());
 			//reset the count
-			inputsSinceNewOutput = 0;
+			//inputsSinceNewOutput = 0;
 		}else{
 			//if the last output was null (this is the fist input)
 			//or the comparison test is passed for this input and the previous
@@ -63,6 +63,8 @@ public abstract class CompareFilterN<T> extends FilterN<T> implements Comparing<
 	private T getFilteredValue(){
 		Iterator<T> it = buf.iterator();
 		T val = it.next();
+		int count = N - 2;
+		inputsSinceNewOutput = N - 1;
 		//Check each stored input
 		while(it.hasNext()){
 			T temp = it.next();
@@ -71,7 +73,9 @@ public abstract class CompareFilterN<T> extends FilterN<T> implements Comparing<
 			if(compare(temp, val)){
 				//Set the last to pass the test
 				val = temp;
+				inputsSinceNewOutput = count;
 			}
+			count--;
 		}
 		return val;
 	}

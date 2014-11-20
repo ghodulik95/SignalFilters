@@ -9,6 +9,6 @@
 public class MinFilter<T extends Comparable<T>> extends CompareFilter<T> {
 	@Override
 	public boolean compare(T left, T right) {
-		return left != null && left.compareTo(right) <= 0;
+		return right == null || (left != null && left.compareTo(right) <= 0);
 	}
 }
