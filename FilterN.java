@@ -39,6 +39,4 @@ public abstract class FilterN<T> extends Filter<T> {
 		setOutput(r);
 		inputsSinceNewOutput = 0;
 	}
-
-	
 }

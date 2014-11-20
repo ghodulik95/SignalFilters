@@ -12,7 +12,7 @@ public class IdentityFilter<T> extends Filter<T>{
 	protected void processInput(T input){
 		setOutput(input);
 	}
-
+	
 	@Override
 	public void reset(T r) {
 		setOutput(r);
