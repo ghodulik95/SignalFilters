@@ -41,6 +41,7 @@ public class FilterCascade<T> extends Filter<T>{
 		while(it.hasNext()){
 			it.next().reset(r);
 		}
+		setOutput(r);
 	}
 
 }
