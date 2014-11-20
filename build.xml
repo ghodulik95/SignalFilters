@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- George Hodulik EECS 293 HW2 ANT BUILD-->
+<project basedir="." default="build" name="chemical">
+	<property environment="env"/>
+	<property name="junit.output.dir" value="junit"/>
+	<property name="debuglevel" value="source,lines,vars"/>
+	<property name="target" value="1.6"/> <!-- Change these values to your version of javac -->
+	<property name="source" value="1.6"/> <!-- Change these values to your version of javac -->
+	<path id="JUnit 4.libraryclasspath"> <!-- where are our jars? -->
+		<pathelement location="junit.jar"/>
+		<pathelement location="org.hamcrest.core_1.1.0.v20090501071000.jar"/>
+	</path>
+	<path id="chemical.classpath">
+		<pathelement location="bin"/> <!-- where do we put compiled bits? -->
+		<path refid="JUnit 4.libraryclasspath"/>
+	</path>
+	<target name="build">
+		<mkdir dir="bin"/>
+		<echo message="${ant.project.name}: ${ant.file}"/>
+		<javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
+            <src path="./"/> <!-- where are our source files stored? -->
+			<classpath refid="JUnit 4.libraryclasspath"/> <!-- import JUnit library so we can compile JUnit test cases! -->
+            <classpath refid="chemical.classpath"/> 
+        </javac>
+    </target>
+	<target name="clean">
+        <delete dir="bin"/>
+    </target>
+	<!--<target name="run">
+        <java classname="Test" failonerror="true" fork="yes">
+            <classpath refid="chemical.classpath"/> 
+        </java>
+    </target> !-->
+	<target name="test">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="TestFilters" todir="${junit.output.dir}"/>
+            <classpath refid="chemical.classpath"/>
+        </junit>
+    </target>
+</project>
