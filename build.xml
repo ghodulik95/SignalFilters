@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- George Hodulik EECS 293 HW2 ANT BUILD-->
-<project basedir="." default="build" name="chemical">
+<project basedir="." default="build" name="signal">
 	<property environment="env"/>
 	<property name="junit.output.dir" value="junit"/>
 	<property name="debuglevel" value="source,lines,vars"/>
@@ -10,7 +10,7 @@
 		<pathelement location="junit.jar"/>
 		<pathelement location="org.hamcrest.core_1.1.0.v20090501071000.jar"/>
 	</path>
-	<path id="chemical.classpath">
+	<path id="signal.classpath">
 		<pathelement location="bin"/> <!-- where do we put compiled bits? -->
 		<path refid="JUnit 4.libraryclasspath"/>
 	</path>
@@ -20,7 +20,7 @@
 		<javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
             <src path="./"/> <!-- where are our source files stored? -->
 			<classpath refid="JUnit 4.libraryclasspath"/> <!-- import JUnit library so we can compile JUnit test cases! -->
-            <classpath refid="chemical.classpath"/> 
+            <classpath refid="signal.classpath"/> 
         </javac>
     </target>
 	<target name="clean">
@@ -28,7 +28,7 @@
     </target>
 	<!--<target name="run">
         <java classname="Test" failonerror="true" fork="yes">
-            <classpath refid="chemical.classpath"/> 
+            <classpath refid="signal.classpath"/> 
         </java>
     </target> !-->
 	<target name="test">
@@ -36,7 +36,29 @@
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
             <test name="TestFilters" todir="${junit.output.dir}"/>
-            <classpath refid="chemical.classpath"/>
+            <classpath refid="signal.classpath"/>
         </junit>
     </target>
+    
+    <!-- JAVADOC Building !-->
+    <target name="doc" depends="build"
+   description="Create Javadoc API documentation">
+
+    <mkdir          dir="javadoc"/>
+    <javadoc sourcepath="./"
+                destdir="javadoc"
+           packagenames="com.*"
+           sourcefiles = "AveragingFilter.java, AveragingFilterN.java,
+			BinomialFilter.java, CompareFilter.java,
+			CompareFilterN.java, Comparing.java,
+			Filter.java, FilterCascade.java,
+			FilterN.java, FIRFilter.java, GainFilter.java,
+			GenericFilter.java, IdentityFilter.java,
+			MaxFilter.java, MaxFilterN.java, MinFilter.java,
+			MinFilterN.java, NBuffer.java, ScalarLinearFilter.java,
+			ScalarFilter.java">
+      <classpath refid="signal.classpath"/>
+    </javadoc>
+
+  </target>
 </project>

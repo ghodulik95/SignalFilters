@@ -7,8 +7,7 @@
  * @author thomas
  *
  */
-public class FIRFilter extends ScalarFilter {
-	private ScalarLinearFilter fir;
+public class FIRFilter extends ScalarLinearFilter {
 	
 	/**
 	 * A FIRFilter is just a ScalarLinearFilter with
@@ -16,18 +15,7 @@ public class FIRFilter extends ScalarFilter {
 	 * @param b
 	 */
 	public FIRFilter(Double[] b){
-		Double[] a = new Double[0];
-		fir = new ScalarLinearFilter(a,b);
-	}
-	
-	@Override
-	protected void processInput(Double input) {
-		setOutput(fir.filter(input));
-	}
-
-	@Override
-	public void reset(Double r) {
-		fir.reset(r);
+		super( new Double[0], b);
 	}
 
 }

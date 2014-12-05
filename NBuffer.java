@@ -19,8 +19,8 @@ public class NBuffer<T> {
 	public final int N;
 	
 	/**
-	 * Set N ad contruct the buffer
-	 * @param n
+	 * Set N and construct the buffer
+	 * @param n		The max number of values the buffer holds
 	 */
 	public NBuffer(int n){
 		N = n;
@@ -31,8 +31,10 @@ public class NBuffer<T> {
 	 * Push an object into the buffer
 	 * This will return and remove the last item in the list
 	 * if there were N items in the buffer before calling push
-	 * @param in
-	 * @return
+	 * @param in	The value we are pushing into the buffer
+	 * @return	Returns the last element remembered in the buffer if
+	 * 			it is full (the last element is pushed out), otherwise
+	 * 			returns null if the buffer was not full.
 	 */
 	public T push(T in){
 		T out = null;
@@ -48,7 +50,7 @@ public class NBuffer<T> {
 	
 	/**
 	 * Fills the buffer with newVal
-	 * @param newVal
+	 * @param newVal	The value the buffer is filled with
 	 */
 	public void reset(T newVal){
 		for(int i = 0; i < N; i++){
@@ -57,8 +59,13 @@ public class NBuffer<T> {
 	}
 	
 	/**
-	 * Simply returns the iterator of the buffer
-	 * @return
+	 * Simply returns the iterator of the buffer.
+	 * This function breaks encapsulation!
+	 * Please use cautiously: it is only intended
+	 * for READ-ONLY operations.  There is no way to
+	 * enforce this convention, so please keep it in mind
+	 * when coding.
+	 * @return	returns the iterator of the buffer
 	 */
 	public Iterator<T> iterator(){
 		return buffer.iterator();

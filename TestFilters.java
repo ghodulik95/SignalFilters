@@ -114,6 +114,9 @@ public class TestFilters {
 		assertTrue(allowableDifference(10/3.0, fil.filter(0.0)));
 	}
 	
+	/**
+	 * Testing the AveragingFilterN
+	 */
 	@Test 
 	public void testAveragingN(){
 		fil = new AveragingFilterN(N);

@@ -11,23 +11,23 @@ public abstract class Filter<T> implements GenericFilter<T>{
 	private T output;
 	
 	/**
-	 * Returns the previous output
-	 * @return
+	 * Returns the previous output.
+	 * @return	the previous output
 	 */
 	public final T getPrevOutput() {
 		return output;
 	}
 	
 	/**
-	 * Resets the output to r
-	 * Will have a different effect for different filters
+	 * Resets the output to r.
+	 * Will have a different effect for different filters.
 	 * @param r
 	 */
 	public abstract void reset(T r);
 	
 	/**
-	 * Set the output to the given parameter
-	 * @param prevOutput	set the output to this value
+	 * Set the output to the given parameter.
+	 * @param prevOutput	set the output to this value.
 	 */
 	protected final void setOutput(T prevOutput) {
 		this.output = prevOutput;
@@ -35,7 +35,7 @@ public abstract class Filter<T> implements GenericFilter<T>{
 	
 	/**
 	 * The filter function calls the abstract function
-	 * processInput(), then returns the local output variable
+	 * processInput(), then returns the local output variable.
 	 */
 	public final T filter(T input){
 		processInput(input);
@@ -44,7 +44,7 @@ public abstract class Filter<T> implements GenericFilter<T>{
 	
 	/**
 	 * An abstract function that will alter the local output
-	 * to control the next output
+	 * to control the next output.
 	 * @param input		the current input
 	 */
 	protected abstract void processInput(T input);

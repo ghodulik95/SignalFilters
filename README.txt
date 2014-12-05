@@ -1,3 +1,14 @@
+----CHANGES FOR HW 13-------
+
+I have changed the children of ScalarLinearFilter
+to inherit ScalarLinearFilter insead of containing.
+
+I have also added much javadoc.  To generate the html
+files with ant please use the command:
+ant "doc" -f build.xml
+
+----------------------------
+
 Please note that I misunderstood the assignment and began
 coding.  If my design is confusing, please feel free to look at
 the code, but note that it is not 100% complete. 

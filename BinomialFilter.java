@@ -7,18 +7,15 @@
  * @author gmh73
  *
  */
-public class BinomialFilter extends ScalarFilter {
-	private FIRFilter bin;
+public class BinomialFilter extends FIRFilter {
 	
 	/**
 	 * A BinomialFilter is just a FIRFilter
 	 * with a b that is binomial coefficients
 	 * @param n
 	 */
-	private BinomialFilter(int n){
-		Double[] b = new Double[n+1];
-		setBinomial(b);
-		bin = new FIRFilter(b);
+	private BinomialFilter(Double[] b){
+		super(b);
 	}
 	
 	/**
@@ -26,7 +23,7 @@ public class BinomialFilter extends ScalarFilter {
 	 * binomial coefficient
 	 * @param b
 	 */
-	private void setBinomial(Double[] b) {
+	private static void setBinomial(Double[] b) {
 		int n = b.length - 1;
 		//Get all the factorials from 0 to n
 		int[] factorial = factorial(n);
@@ -41,7 +38,7 @@ public class BinomialFilter extends ScalarFilter {
 	 * @param max	a number
 	 * @return	an array of the factorial from 0 to max
 	 */
-	private int[] factorial(int max){
+	private static int[] factorial(int max){
 		int[] f = new int[max+1];
 		//factorial of 0 is 1
 		f[0] = 1;
@@ -52,21 +49,22 @@ public class BinomialFilter extends ScalarFilter {
 		}
 		return f;
 	}
-
-	@Override
-	protected void processInput(Double input) {
-		setOutput(bin.filter(input));
-	}
-
-	@Override
-	public void reset(Double r) {
-		bin.reset(r);
-	}
 	
+	/**
+	 * Factory method for BinomialFilter
+	 * Makes a BinomialFilter with inut n
+	 * @param n		the n in the expression (n choose k) for a binomial filter.
+	 * 				Note that with n = n1, the number of values in b is actually
+	 * 				n1 + 1, not n1
+	 * @return		returns a new BinomialFilter
+	 */
 	public static BinomialFilter getInstance(int n){
 		if(n < 0)
 			throw new IllegalArgumentException("N cannot be negative");
-		return new BinomialFilter(n);
+		//Set up the factorial array for b
+		Double[] b = new Double[n+1];
+		setBinomial(b);
+		return new BinomialFilter(b);
 	}
 
 }

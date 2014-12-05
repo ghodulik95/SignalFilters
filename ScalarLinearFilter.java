@@ -19,8 +19,8 @@ public class ScalarLinearFilter extends ScalarFilter {
 	
 	/**
 	 * Sets initial values and sets the buffers to all zeroes
-	 * @param a
-	 * @param b
+	 * @param a		The a values as specified by the assignment
+	 * @param b		The b values as specified by the assignment
 	 */
 	public ScalarLinearFilter(Double[] a, Double[] b){
 		this.a = a;
@@ -40,6 +40,11 @@ public class ScalarLinearFilter extends ScalarFilter {
 		outputs.reset(prevOutputs);
 	}
 	
+	/**
+	 * The new output value needs to be calculated according
+	 * to the description in the assignment, and then stored
+	 * into our buffer.  The new input is also saved.
+	 */
 	@Override
 	protected void processInput(Double input) {
 		outputs.push(input);
@@ -65,7 +70,10 @@ public class ScalarLinearFilter extends ScalarFilter {
 		setOutput(nextOutput);
 		inputs.push(nextOutput);
 	}
-
+	
+	/**
+	 * The reset operation described in the assignment is implemented here.
+	 */
 	@Override
 	public void reset(Double r) {
 		//The previous inputs are set to r

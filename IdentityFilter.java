@@ -8,11 +8,17 @@
  */
 public class IdentityFilter<T> extends Filter<T>{
 	
+	/**
+	 * Simply sets the output to input
+	 */
 	@Override
 	protected void processInput(T input){
 		setOutput(input);
 	}
 	
+	/**
+	 * Resets the previous output to r
+	 */
 	@Override
 	public void reset(T r) {
 		setOutput(r);

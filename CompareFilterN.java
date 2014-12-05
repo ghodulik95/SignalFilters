@@ -17,10 +17,20 @@ import java.util.Iterator;
  */
 public abstract class CompareFilterN<T> extends FilterN<T> implements Comparing<T>{
 	
+	/**
+	 * Makes a new CompareFilterN that remembers n values. 
+	 * @param n		The number of outputs the filter remembers.
+	 */
 	public CompareFilterN(int n) {
 		super(n);
 	}
-
+	
+	/**
+	 * If the previous output is from an input for which compare returned true
+	 * was < N inputs ago, the input is simply compared against the previous
+	 * output.  If the previous output was updated >= N inputs ago, the new
+	 * output is found by checking each remembered input. 
+	 */
 	@Override
 	protected void processInput(T input) {
 		//push the input into our buffer
@@ -47,18 +57,23 @@ public abstract class CompareFilterN<T> extends FilterN<T> implements Comparing<
 	}
 
 	/**
-	 * An abstract comparison test that will return true
-	 * if the test between input and prevFiltered passes
-	 * @param input
-	 * @param prevFiltered
-	 * @return
+	 * An abstract compare function that will determine
+	 * if the input passes a comparison test over
+	 * the previous output.
+	 * Whether or not left and right matters is determined
+	 * when overridden.  Ex. left compare right =?= right compare left
+	 * Example: the compare may return left > right, or it might
+	 * return left + right == 10
+	 * @param left	The left operand of the comparison
+	 * @param right		The right operand of the comparison
 	 */
 	public abstract boolean compare(T left, T right);
 	
 	/**
 	 * Iterates through the buffer of previous inputs
 	 * to find the one/ oldest one that satisfies the comparison test
-	 * @return
+	 * @return	returns the best candidate in memory.
+	 * 			Note that "best" is abstract, determined by the compare function.
 	 */
 	private T getFilteredValue(){
 		Iterator<T> it = buf.iterator();

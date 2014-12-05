@@ -23,6 +23,11 @@ public class FilterCascade<T> extends Filter<T>{
 		cascade = filters;
 	}
 	
+	/**
+	 * Runs the input through the FilterCascade by getting the output
+	 * from inputting the input into the first filter, then taking that
+	 * output and inputting it as the input to the second filter, and so on.
+	 */
 	@Override
 	protected void processInput(T input) {
 		//Go through each filter then set the output to
@@ -34,7 +39,12 @@ public class FilterCascade<T> extends Filter<T>{
 		}
 		setOutput(prev);
 	}
-
+	
+	/**
+	 * Resets all filters in the cascade to r.
+	 * Each filter may have a very different reset function,
+	 * so be aware when using.
+	 */
 	@Override
 	public void reset(T r) {
 		Iterator<Filter<T>> it = cascade.iterator();

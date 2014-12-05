@@ -7,8 +7,7 @@
  * @author gmh73
  *
  */
-public class GainFilter extends ScalarFilter {
-	private FIRFilter gainFilter;
+public class GainFilter extends FIRFilter {
 	
 	/**
 	 * A gain filter is just a FIRFilter
@@ -16,18 +15,6 @@ public class GainFilter extends ScalarFilter {
 	 * @param gain
 	 */
 	public GainFilter(Double gain){
-		Double[] b = new Double[1];
-		b[0] = gain;
-		gainFilter = new FIRFilter(b);
-	}
-
-	@Override
-	protected void processInput(Double input) {
-		setOutput(gainFilter.filter(input));
-	}
-
-	@Override
-	public void reset(Double r) {
-		gainFilter.reset(r);
+		super(new Double[]{gain});
 	}
 }
